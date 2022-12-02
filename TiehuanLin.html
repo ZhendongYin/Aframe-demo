@@ -11,17 +11,19 @@
     <script id="boxTemplate" type="text/x-nunjucks-template">
       {% for x in range(0, 40) %}
           <a-box 
-          
           ammo-body="type: dynamic; emitCollisionEvents: true;" ammo-shape="type:box"
                   obj-model="obj: #charizard-obj; mtl: #charizard-mtl"
                   scale="0.15 0.15 0.15"
                   position="0 {{5*x}} -10"
+                  
                   material="src:wood.jpg;  repeat:1 1"
                   >
           </a-box>
       {% endfor %}
       
     </script>
+
+    
   </head>
   </head>
 
@@ -33,10 +35,6 @@
 </head>
 
 <body>
-    <!--
-        We use the Ammo Physics system here.
-        https://github.com/n5ro/aframe-physics-system/blob/HEAD/AmmoDriver.md#ammo-body       
-    -->
     <a-assets>
         <a-asset-item id="bulbasaur-obj" src="assets/bulbasaur/bulbasaur-pokemon-go.obj"></a-asset-item>
         <a-asset-item id="bulbasaur-mtl" src="assets/bulbasaur/bulbasaur-pokemon-go.mtl"></a-asset-item>
@@ -55,8 +53,8 @@
       </a-assets>
       
     <a-scene   physics="driver: ammo; debug: false; debugDrawMode: 1;">
-
-      <a-entity  position = '5 5 5'  template="src: #boxTemplate"></a-entity>
+      
+      <a-entity follow="target:#avatar;url:npcdemo.html; speed:-7; dist:10"  position = '5 5 5'  template="src: #boxTemplate" ></a-entity>
 
       <a-box  
       follow="target:#avatar;url:npcdemo.html; speed:-7; dist:10"
