@@ -1,0 +1,43 @@
+<html>
+
+<head>
+
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script src="https://mixedreality.mozilla.org/ammo.js/builds/ammo.wasm.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/aframe-template-component@^3.1.1/dist/aframe-template-component.min.js"></script>
+    <script src="follow.js"></script>
+    <script src="shoot.js"></script>
+    <script>
+        THREE.inverse = THREE.invert;
+    </script>
+</head>
+
+<body>
+    <a-scene id="myScene" physics=" driver: ammo; debug: false; debugDrawMode: 1;">
+        <a-assets>
+            <a-asset-item id="ball" src="Pokeball.gltf"></a-asset-item>
+            <a-asset-item id="pikachu" src="Pikachu.gltf"></a-asset-item>
+        </a-assets>
+
+        <a-sky material="src:evening.jpeg"></a-sky>
+
+        <a-entity id="avatar" movement-controls="fly:false" look-controls="pointerLockEnabled:false" oculus-go-controls wasd-controls>
+            <a-box material="color:blue; opacity:0.5" position="0 0 0" width="3" height="1" depth="10"></a-box>
+            <a-entity camera position="0 1.6 0"></a-entity>
+            <a-entity id="hud" health="10" score="0" text="width:3; value: 0;" position="0 1 -2"></a-entity>
+        </a-entity>
+
+        <a-entity hit class="target" width='10' animation-mixer="clip:Walk" gltf-model="#pikachu" position="-20 0 -20" ammo-body="type:dynamic;  emitCollisionEvents: true;" ammo-shape="type: sphere; fit: manual; sphereRadius:2"></a-entity>
+        <a-entity hit class="target" width='10' animation-mixer="clip:Walk" gltf-model="#pikachu" position="-10 0 -20" ammo-body="type:dynamic;  emitCollisionEvents: true;" ammo-shape="type: sphere; fit: manual; sphereRadius:2"></a-entity>
+        <a-entity hit class="target" width='10' animation-mixer="clip:Walk" gltf-model="#pikachu" position="0 0 -20" ammo-body="type:dynamic;  emitCollisionEvents: true;" ammo-shape="type: sphere; fit: manual; sphereRadius:2"></a-entity>
+        <a-entity hit class="target" width='10' animation-mixer="clip:Walk" gltf-model="#pikachu" position="10 0 -20" ammo-body="type:dynamic;  emitCollisionEvents: true;" ammo-shape="type: sphere; fit: manual; sphereRadius:2"></a-entity>
+        <a-entity hit class="target" width='10' animation-mixer="clip:Walk" gltf-model="#pikachu" position="20 0 -20" ammo-body="type:dynamic;  emitCollisionEvents: true;" ammo-shape="type: sphere; fit: manual; sphereRadius:2"></a-entity>
+
+        <a-box class='floor' id="floor" ammo-body="type:static;" ammo-shape="type:box" width="200" height="200" depth="1" rotation="-90 0 0" position="0 -0.5 0" material="src:seamless_brick-512x512.png; repeat:40 40"></a-box>
+
+    </a-scene>
+</body>
+
+</html>
