@@ -59,7 +59,7 @@ AFRAME.registerComponent('hit', {
                 a.setAttribute("text", "width:3; value: " + count)
                 console.log(count);
                 if (count >= 3) {
-                    // location.href = url;
+                    location.href = "DanqiuFu.html";
                 }
             }
         });
