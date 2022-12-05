@@ -26,7 +26,7 @@
         <a-entity id="avatar" movement-controls="fly:false" look-controls="pointerLockEnabled:false" oculus-go-controls wasd-controls>
             <a-box material="color:blue; opacity:0.5" position="0 0 0" width="3" height="1" depth="10"></a-box>
             <a-entity camera position="0 1.6 0"></a-entity>
-            <a-entity id="hud" health="10" score="0" text="width:3; value: 0;" position="0 1 -2"></a-entity>
+            <a-entity id="hud" health="10" score="0" text="width:3; value: Press the space bar to throw the poke ball;" position="0 1 -2"></a-entity>
         </a-entity>
 
         <a-entity hit class="target" width='10' animation-mixer="clip:Walk" gltf-model="#pikachu" position="-20 0 -20" ammo-body="type:dynamic;  emitCollisionEvents: true;" ammo-shape="type: sphere; fit: manual; sphereRadius:2"></a-entity>

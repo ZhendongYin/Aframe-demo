@@ -26,6 +26,10 @@ AFRAME.registerComponent('follow', {
     },
 
 
+
+
+
+
     tick: function(time, timeDelta) {
         var directionVec3 = this.directionVec3;
 
