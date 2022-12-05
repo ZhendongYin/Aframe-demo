@@ -19,12 +19,13 @@
         <a-assets>
             <a-asset-item id="ball" src="Pokeball.gltf"></a-asset-item>
             <a-asset-item id="pikachu" src="Pikachu.gltf"></a-asset-item>
+            <a-mixin id="wall" geometry="primitive:box;width:190; height:100; depth:1" material="src:wall.jpg;  repeat:20 20"></a-mixin>
         </a-assets>
 
         <a-sky material="src:evening.jpeg"></a-sky>
 
         <a-entity id="avatar" movement-controls="fly:false" look-controls="pointerLockEnabled:false" oculus-go-controls wasd-controls>
-            <a-box material="color:blue; opacity:0.5" position="0 0 0" width="3" height="1" depth="10"></a-box>
+            <a-box ammo-body="type:kinematic;" ammo-shape="type:box" material="color:blue; opacity:0.5" position="0 0 0" width="3" height="1" depth="10"></a-box>
             <a-entity camera position="0 1.6 0"></a-entity>
             <a-entity id="hud" health="10" score="0" text="width:3; value: Press the space bar to throw the poke ball;" position="0 1 -2"></a-entity>
         </a-entity>
@@ -34,6 +35,10 @@
         <a-entity hit class="target" width='10' animation-mixer="clip:Walk" gltf-model="#pikachu" position="0 0 -20" ammo-body="type:dynamic;  emitCollisionEvents: true;" ammo-shape="type: sphere; fit: manual; sphereRadius:2"></a-entity>
         <a-entity hit class="target" width='10' animation-mixer="clip:Walk" gltf-model="#pikachu" position="10 0 -20" ammo-body="type:dynamic;  emitCollisionEvents: true;" ammo-shape="type: sphere; fit: manual; sphereRadius:2"></a-entity>
         <a-entity hit class="target" width='10' animation-mixer="clip:Walk" gltf-model="#pikachu" position="20 0 -20" ammo-body="type:dynamic;  emitCollisionEvents: true;" ammo-shape="type: sphere; fit: manual; sphereRadius:2"></a-entity>
+        <a-entity id='wall1' mixin="wall" ammo-body="type:static;" ammo-shape="type:box" position="0 0 -100"></a-entity>
+        <a-entity id='southwall' mixin="wall" ammo-body="type:static;" ammo-shape="type:box" position="0 0 100"></a-entity>
+        <a-entity id='eastwall' mixin="wall" ammo-body="type:static;" ammo-shape="type:box" rotation="0 100 0" position="100 5 0"></a-entity>
+        <a-entity id='westwall' mixin="wall" ammo-body="type:static;" ammo-shape="type:box" rotation="0 100 0" position="-100 5 0"></a-entity>
 
         <a-box class='floor' id="floor" ammo-body="type:static;" ammo-shape="type:box" width="200" height="200" depth="1" rotation="-90 0 0" position="0 -0.5 0" material="src:seamless_brick-512x512.png; repeat:40 40"></a-box>
 
