@@ -1,0 +1,55 @@
+<html>
+
+<head>
+
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script src="https://mixedreality.mozilla.org/ammo.js/builds/ammo.wasm.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/aframe-template-component@^3.1.1/dist/aframe-template-component.min.js"></script>
+    <script src="follow_zixin.js"></script>
+
+
+
+</head>
+
+<body>
+    <a-scene id="myScene" physics=" driver: ammo; debug: false; debugDrawMode: 1;">
+        <a-assets>
+            <a-asset-item id="ball" src="Pokeball.gltf"></a-asset-item>
+            <a-asset-item id="warning" src="warning.gltf"></a-asset-item>
+            <a-asset-item id="pikachu" src="Pikachu.gltf"></a-asset-item>
+            <a-asset-item id="pikachu" src="Pikachu.gltf"></a-asset-item>
+            <a-asset-item id="gate" src="gate.gltf"></a-asset-item>
+        </a-assets>
+
+        <a-sky material="src:evening.jpeg"></a-sky>
+
+        <a-box id='floor' ammo-body="type:static;" ammo-shape="type:box" width="200" height="200" depth="1" rotation="-90 0 0" position="0 -0.5 0" material="src:grass.jpg; repeat:40 40"></a-box>
+
+
+        <a-entity  movement-controls="fly:false" look-controls="pointerLockEnabled:false" oculus-go-controls wasd-controls>
+            <a-entity gltf-model="#pikachu" position="0 0 -5"  rotation="0 -180 0" scale="0.5 0.5 0.5" ammo-body="type:kinematic;  emitCollisionEvents: true;" ammo-shape="type: sphere; fit: manual; sphereRadius:2"></a-entity>
+            <a-entity camera position="0 4 2"></a-entity>
+            <a-entity id="hud" health="10" score="0" text="width:3; value: Please push the Poke Ball into the gate! Don't fall out of the field or step into red area!" position="0 1 -2"></a-entity>
+        </a-entity>
+
+
+        <a-entity gltf-model="#warning"  position="0 0 0" ></a-entity>
+        <a-entity gltf-model="#gate"  position="-30 0 -50"  rotation="0 -90 0" scale="3 3 3" ></a-entity>
+        <a-sphere color="yellow" radius="0.01" position="-30 0 -50"   follow="target:#avatar;url: TiehuanLin.html; speed:2; dist:2"></a-sphere>
+        <a-entity gltf-model="#pikachu" animation-mixer="clip:Jump" position="-40 0 -50" follow="target:#avatar;url: TiehuanLin.html; speed:2; dist:10"></a-entity>
+        <a-entity gltf-model="#pikachu" animation-mixer="clip:Jump" position="-20 0 -50" follow="target:#avatar;url: TiehuanLin.html; speed:2; dist:10"></a-entity>
+
+
+        <a-entity id="avatar" gltf-model="#ball" 
+            position="0 5 -10"  ammo-body="type:dynamic;" ammo-shape="type: sphere; fit: manual; sphereRadius:1">
+        </a-entity>
+
+
+
+    </a-scene>
+</body>
+
+</html>
+
