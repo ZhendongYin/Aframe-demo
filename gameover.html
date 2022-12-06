@@ -1,0 +1,78 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script src="https://mixedreality.mozilla.org/ammo.js/builds/ammo.wasm.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/aframe-template-component@^3.1.1/dist/aframe-template-component.min.js"></script> 
+    <script src="follow.js"></script>
+
+
+  </head>
+  <body>
+
+    <a-assets>
+      <a-asset-item id="pikachu" src="Pikachu.gltf"></a-asset-item>
+      <a-asset-item id="bulbasaur-obj" src="assets/bulbasaur/bulbasaur-pokemon-go.obj"></a-asset-item>
+      <a-asset-item id="bulbasaur-mtl" src="assets/bulbasaur/bulbasaur-pokemon-go.mtl"></a-asset-item>
+      
+      <a-asset-item id="weedle" src="assets/weedle/Weedle.gltf"></a-asset-item>
+      
+      <a-asset-item id="charizard-obj" src="assets/charizard/charizard-pokemon-go.obj"></a-asset-item>
+      <a-asset-item id="charizard-mtl" src="assets/charizard/charizard-pokemon-go.mtl"></a-asset-item>
+  </a-assets>
+    <!--
+        We use the Ammo Physics system here.
+        https://github.com/n5ro/aframe-physics-system/blob/HEAD/AmmoDriver.md#ammo-body       
+    -->
+  <a-scene physics="driver: ammo; debug: false; debugDrawMode: 1;">
+
+
+
+
+
+    <!-- Floor -->
+    <a-box id="floor"
+        ammo-body="type:static;" ammo-shape="type:box"
+        width="200" height="200" depth="1"
+        rotation="-90 0 0" position="0 -0.5 0" 
+        material="src:wood.jpg; repeat:40 40"
+    ></a-box>
+
+   
+    <!-- walls are defined with mixins but ammo-body,ammo-shape
+         can not be in the mixin ...
+    -->
+    <a-entity id='northwall' mixin="wall" 
+              ammo-body="type:static;" ammo-shape="type:box"
+              position="0 5 -100"></a-entity>
+    <a-entity id='southwall' mixin="wall" 
+              ammo-body="type:static;" ammo-shape="type:box"
+              position="0 5 100"></a-entity>
+    <a-entity id='eastwall' mixin="wall" 
+              ammo-body="type:static;" ammo-shape="type:box"
+              rotation="0 90 0"
+              position="100 5 0"></a-entity>
+    <a-entity id='westwall' mixin="wall" 
+              ammo-body="type:static;" ammo-shape="type:box"
+              rotation="0 90 0"
+              position="-100 5 0"></a-entity>
+    
+
+    <!-- avatar -->
+    <a-entity  movement-controls="fly:false" look-controls="pointerLockEnabled:false" oculus-go-controls wasd-controls>
+      <a-entity camera position="0 4 2"></a-entity>
+      <a-entity id="hud" health="10" score="0" text="width:10; value: Mission Complete!" position="0 1 -2"></a-entity>
+  </a-entity>
+
+  <a-entity gltf-model="#pikachu" animation-mixer="clip:Jump" position="20 0 -40"  rotation="0 0 0"  ammo-body="type:kinematic;  emitCollisionEvents: true;" ammo-shape="type: sphere; fit: manual; sphereRadius:2"></a-entity>
+  <a-entity  id="weedle" gltf-model="Weedle.gltf" animation-mixer="clip:node" position="-20 5 -40" rotation="0 90 0"></a-entity>
+  <a-entity obj-model="obj: #charizard-obj; mtl: #charizard-mtl" position="0 0 -40"  > </a-entity>
+  <a-entity id = "bb"  obj-model="obj: #bulbasaur-obj; mtl: #bulbasaur-mtl" position="2 0 -20" rotation="0 0 0" scale="0.15 0.15 0.15"> </a-entity>
+
+
+  <a-sky material="src:star.jpg"></a-sky>
+  
+  </a-scene>
+  </body>
+  </html>

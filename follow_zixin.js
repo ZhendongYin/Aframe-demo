@@ -52,9 +52,9 @@ AFRAME.registerComponent('follow', {
 
         //alert(y)
         // If the target is close, then end the game!
-        if (Math.abs(z+50) <= 0.5 && x >= -31.5 && x <= -28.5 && this.data.url) {
+        if (Math.abs(z+50) <= 0.5 && x >= -33 && x <= -27 && this.data.url) {
             //alert(targetPosition.x+" "+targetPosition.y+" "+targetPosition.z+"\n"+currentPosition.x+" "+currentPosition.y+" "+currentPosition.z)
-            window.location.href = this.data.url;
+            window.location.href = "gameover.html";
         } else if (y < -5 || (x <= -20 && x >= -50 && z <= 0 && z >= -30 && y < 5.05) || (x <= 30 && x >= -10 && z <= -20 && z >= -30 && y < 5.05)) {
             window.location.href = "ZixinZhang.html";
         } else if (distance > this.data.dist) {
