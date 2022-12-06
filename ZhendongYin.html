@@ -35,10 +35,10 @@
         <a-entity hit class="target" width='10' animation-mixer="clip:Walk" gltf-model="#pikachu" position="0 0 -20" ammo-body="type:dynamic;  emitCollisionEvents: true;" ammo-shape="type: sphere; fit: manual; sphereRadius:2"></a-entity>
         <a-entity hit class="target" width='10' animation-mixer="clip:Walk" gltf-model="#pikachu" position="10 0 -20" ammo-body="type:dynamic;  emitCollisionEvents: true;" ammo-shape="type: sphere; fit: manual; sphereRadius:2"></a-entity>
         <a-entity hit class="target" width='10' animation-mixer="clip:Walk" gltf-model="#pikachu" position="20 0 -20" ammo-body="type:dynamic;  emitCollisionEvents: true;" ammo-shape="type: sphere; fit: manual; sphereRadius:2"></a-entity>
-        <a-entity id='wall1' mixin="wall" ammo-body="type:static;" ammo-shape="type:box" position="0 0 -100"></a-entity>
-        <a-entity id='southwall' mixin="wall" ammo-body="type:static;" ammo-shape="type:box" position="0 0 100"></a-entity>
-        <a-entity id='eastwall' mixin="wall" ammo-body="type:static;" ammo-shape="type:box" rotation="0 100 0" position="100 5 0"></a-entity>
-        <a-entity id='westwall' mixin="wall" ammo-body="type:static;" ammo-shape="type:box" rotation="0 100 0" position="-100 5 0"></a-entity>
+        <a-entity id='wall1' mixin="wall" ammo-body="type:static;" ammo-shape="type:box" position="0 0 -200"></a-entity>
+        <a-entity id='southwall' mixin="wall" ammo-body="type:static;" ammo-shape="type:box" position="0 0 200"></a-entity>
+        <a-entity id='eastwall' mixin="wall" ammo-body="type:static;" ammo-shape="type:box" rotation="0 100 0" position="200 0 0"></a-entity>
+        <a-entity id='westwall' mixin="wall" ammo-body="type:static;" ammo-shape="type:box" rotation="0 100 0" position="-200 0 0"></a-entity>
 
         <a-box class='floor' id="floor" ammo-body="type:static;" ammo-shape="type:box" width="200" height="200" depth="1" rotation="-90 0 0" position="0 -0.5 0" material="src:seamless_brick-512x512.png; repeat:40 40"></a-box>
 
